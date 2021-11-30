@@ -16,6 +16,9 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
 
+#define LCD_LenX 84
+#define LCD_LenY 48
+
 #define LCD_CLK 8  // sck |---------|
 #define LCD_Din 9  // din |         |
 #define LCD_DC 10  // dc  | LCD5110 |

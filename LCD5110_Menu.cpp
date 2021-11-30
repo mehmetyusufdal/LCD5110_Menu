@@ -29,7 +29,7 @@ void Menu::showScreen(){
     else if(Menu::chosen_item < Menu::start_iter) Menu::start_iter--;
 
     Menu::lcd.clearDisplay();
-    Menu::lcd.setCursor(0, 0);
+    Menu::lcd.setCursor(Menu::textAlign(CENTERX, &(Menu::title)), 0);
     Menu::lcd.print(Menu::title);
     Menu::lcd.drawLine(0, 8, 83, 8, BLACK);
 
@@ -38,7 +38,7 @@ void Menu::showScreen(){
         if(i == Menu::chosen_item) item = ">" + Menu::menu_items[i] + "<";
         else item =Menu::menu_items[i];
 
-        Menu::lcd.setCursor(0, (i + 1 - Menu::start_iter) * 10);
+        Menu::lcd.setCursor(Menu::textAlign(CENTERX, &item), (i + 1 - Menu::start_iter) * 10);
         Menu::lcd.print(item);
     }
 
