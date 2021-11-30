@@ -2,8 +2,9 @@
     --LCD5110_MENU by Mehmet Yusuf Dal--
     This library is for generating a menu UI on Nokia 5110 GLCD display.
 
-    Rinky-Dink Electronics's Nokia 5110 GLCD Library is required.
-    Source: http://www.rinkydinkelectronics.com/library.php?id=47
+    Adafruit_GFX & Adafruit_PCD8544 Libraries are required.
+    Sources: https://github.com/adafruit/Adafruit-GFX-Library
+             https://github.com/adafruit/Adafruit-PCD8544-Nokia-5110-LCD-library
 */
 
 #ifndef _LCD5110_MENU_H_

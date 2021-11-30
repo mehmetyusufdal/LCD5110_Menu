@@ -2,8 +2,9 @@
     --LCD5110_MENU by Mehmet Yusuf Dal--
     This library is for generating a menu UI on Nokia 5110 GLCD display.
 
-    Rinky-Dink Electronics's Nokia 5110 GLCD Library is required.
-    Source: http://www.rinkydinkelectronics.com/library.php?id=47
+    Adafruit_GFX & Adafruit_PCD8544 Libraries are required.
+    Sources: https://github.com/adafruit/Adafruit-GFX-Library
+             https://github.com/adafruit/Adafruit-PCD8544-Nokia-5110-LCD-library
 
     ---------------------------------------------------------------------
 
@@ -17,7 +18,7 @@
 #include <LCD5110_Menu.h>
 #include <Encoder.h>
 
-LCD5110 Screen::lcd = LCD5110(LCD_CLK, LCD_Din, LCD_DC, LCD_RST, LCD_CE); // Initialize Screen's static LCD5110 object.
+Adafruit_PCD8544 Screen::lcd = Adafruit_PCD8544(LCD_CLK, LCD_Din, LCD_DC, LCD_CE, LCD_RST); // Initialize Screen's static LCD5110 object.
 Encoder encoder(ENC_CLK, ENC_DT, 0, 1, 0, 6); // Encoder generates values between 0-6 (0 and 6 included). Because menu has 7 options.
 
 String menu_items[7] = {"Option1", "Option2", "Option3", "Option4", "Option5", "Option6", "Option7"}; // Menu item titles array.
@@ -27,8 +28,11 @@ extern uint8_t SmallFont[]; // Font type for the lcd.
 bool bg_light = true; // Backlight state of the lcd.
 
 void setup(){
-    menu.lcd.InitLCD(50);
-    menu.lcd.setFont(SmallFont);
+    menu.lcd.begin();
+    menu.lcd.clearDisplay();
+	menu.lcd.setTextColor(BLACK);
+	menu.lcd.setCursor(0,0);
+    
     pinMode(LCD_BL, OUTPUT);
     digitalWrite(LCD_BL, bg_light);
 

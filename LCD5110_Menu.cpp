@@ -2,8 +2,9 @@
     --LCD5110_MENU by Mehmet Yusuf Dal--
     This library is for generating a menu UI on Nokia 5110 GLCD display.
 
-    Rinky-Dink Electronics's Nokia 5110 GLCD Library is required.
-    Source: http://www.rinkydinkelectronics.com/library.php?id=47
+    Adafruit_GFX & Adafruit_PCD8544 Libraries are required.
+    Sources: https://github.com/adafruit/Adafruit-GFX-Library
+             https://github.com/adafruit/Adafruit-PCD8544-Nokia-5110-LCD-library
 */
 
 #ifndef _LCD5110_MENU_
@@ -27,19 +28,21 @@ void Menu::showScreen(){
     if(Menu::chosen_item >= Menu::row_limit + Menu::start_iter) Menu::start_iter++;
     else if(Menu::chosen_item < Menu::start_iter) Menu::start_iter--;
 
-    Menu::lcd.clrScr();
-    Menu::lcd.print(Menu::title, CENTER, 0);
-    for(int t=0;t<83;t++) if(t%2 == 0) Menu::lcd.setPixel(t, 8);
+    Menu::lcd.clearDisplay();
+    Menu::lcd.setCursor(0, 0);
+    Menu::lcd.print(Menu::title);
+    Menu::lcd.drawLine(0, 8, 83, 8, BLACK);
 
     String item = "";
     for(int i=Menu::start_iter; i<=Menu::row_limit + Menu::start_iter; i++){
         if(i == Menu::chosen_item) item = ">" + Menu::menu_items[i] + "<";
         else item =Menu::menu_items[i];
 
-        Menu::lcd.print(item, CENTER, (i + 1 - Menu::start_iter) * 10);
+        Menu::lcd.setCursor(0, (i + 1 - Menu::start_iter) * 10);
+        Menu::lcd.print(item);
     }
 
-    Menu::lcd.update();
+    Menu::lcd.display();
 }
 
 void Menu::setChosen(int chosen_item){ Menu::chosen_item = chosen_item; }
