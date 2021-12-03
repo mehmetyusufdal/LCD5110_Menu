@@ -13,18 +13,18 @@
 #include <Definitions.h>
 
 #define LEFT 0
-#define CENTERX 1
+#define CENTER_X 1
 #define RIGHT 2
 #define TOP 3
-#define CENTERY 4
+#define CENTER_Y 4
 #define BOTTOM 5
 
 class Screen{
 protected:
     String title;
 
-    int textAlign(int align, const String *txt){
-        if(align == LEFT || align == TOP) return 0;
+    int textAlign(int align, const String *txt, int offset = 0){
+        if(align == LEFT || align == TOP) return offset;
 
         int return_val;
         int16_t x1, y1;
@@ -32,24 +32,24 @@ protected:
 
         lcd.getTextBounds(*txt, 0, 0, &x1, &y1, &w, &h);
 
-        switch(align)
+        switch (align)
         {
-            case CENTERX:
-                return_val = (LCD_LenX - w) / 2;
+            case CENTER_X:
+                return_val = (LCD_LenX - (w - offset)) / 2;
                 break;
             case RIGHT:
-                return_val = LCD_LenX - w;
+                return_val = LCD_LenX - (w + offset);
                 break;
-            case CENTERY:
-                return_val = (LCD_LenY - h) / 2;
+            case CENTER_Y:
+                return_val = (LCD_LenY - (h - offset)) / 2;
                 break;
             case BOTTOM:
-                return_val = LCD_LenY - h;
+                return_val = LCD_LenY - (h + offset);
                 break;
         }
 
         return return_val;
-    }
+        }
 
 public:
     static Adafruit_PCD8544 lcd;
