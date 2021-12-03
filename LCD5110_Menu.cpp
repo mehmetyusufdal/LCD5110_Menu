@@ -12,12 +12,13 @@
 
 #include <LCD5110_Menu.h>
 
-Menu::Menu(String title, String *menu_items, int menu_len, int row_limit) : Screen(title){
+Menu::Menu(String title, String *menu_items, int menu_len, int row_limit) {
     Menu::chosen_item = 0;
     Menu::row_limit = row_limit;
     Menu::menu_len = menu_len;
     Menu::menu_items = menu_items;
     Menu::start_iter = 0;
+    Menu::title = title;
 
 }
 

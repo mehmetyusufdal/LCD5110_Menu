@@ -53,10 +53,15 @@ protected:
 
 public:
     static Adafruit_PCD8544 lcd;
-
-    Screen(String title) : title(title){ }
     
     virtual void showScreen() = 0;
+
+    void lcdReset(){
+        lcd.clearDisplay();
+        lcd.setTextSize(1);
+        lcd.setTextColor(BLACK);
+        lcd.setCursor(0,0);
+    }
 
     /*
         Sets the title of menu. Does not updates screen. Changes will be visible when the menu reshowns.
