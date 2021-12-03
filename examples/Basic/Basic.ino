@@ -24,7 +24,6 @@ Encoder encoder(ENC_CLK, ENC_DT, 0, 1, 0, 6); // Encoder generates values betwee
 String menu_items[7] = {"Option1", "Option2", "Option3", "Option4", "Option5", "Option6", "Option7"}; // Menu item titles array.
 Menu menu("MENU", menu_items, 7);
 
-extern uint8_t SmallFont[]; // Font type for the lcd.
 bool bg_light = true; // Backlight state of the lcd.
 
 void setup(){
