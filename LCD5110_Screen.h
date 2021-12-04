@@ -53,10 +53,14 @@ protected:
 
 public:
     static Adafruit_PCD8544 lcd;
+    static int active_page;
     
     virtual void showScreen() = 0;
 
-    void lcdReset(){
+    /*
+        Resets all changes on display.
+    */
+    static void lcdReset(){
         lcd.clearDisplay();
         lcd.setTextSize(1);
         lcd.setTextColor(BLACK);
