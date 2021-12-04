@@ -18,7 +18,7 @@
 #include <LCD5110_Menu.h>
 #include <Encoder.h>
 
-Adafruit_PCD8544 Screen::lcd = Adafruit_PCD8544(LCD_CLK, LCD_Din, LCD_DC, LCD_CE, LCD_RST); // Initialize Screen's static LCD5110 object.
+Adafruit_PCD8544 Screen::lcd = Adafruit_PCD8544(LCD_CLK, LCD_Din, LCD_DC, LCD_CE, LCD_RST); // Initialize Screen's static Adafruit_PCD8544 object.
 Encoder encoder(ENC_CLK, ENC_DT, 0, 1, 0, 6); // Encoder generates values between 0-6 (0 and 6 included). Because menu has 7 options.
 
 String menu_items[7] = {"Option1", "Option2", "Option3", "Option4", "Option5", "Option6", "Option7"}; // Menu item titles array.
@@ -27,13 +27,11 @@ Menu menu("MENU", menu_items, 7);
 bool bg_light = true; // Backlight state of the lcd.
 
 void setup(){
-    menu.lcd.begin();
-    menu.lcd.clearDisplay();
-	menu.lcd.setTextColor(BLACK);
-	menu.lcd.setCursor(0,0);
-    
     pinMode(LCD_BL, OUTPUT);
     digitalWrite(LCD_BL, bg_light);
+    
+    Screen::lcd.begin();
+    Screen::lcdReset();
 
     menu.showScreen(); // Show menu on display.
 

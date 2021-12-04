@@ -38,8 +38,6 @@ void setup(){
     pinMode(LCD_BL, OUTPUT);
     digitalWrite(LCD_BL, bg_light);
 
-    Serial.begin(9600);
-
     Screen::lcd.begin();
     Screen::lcdReset();
 
