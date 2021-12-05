@@ -18,6 +18,17 @@
 #include <Encoder.h>
 #include "Pages.h"
 
+#define LCD_CLK 8  // sck |---------|
+#define LCD_Din 9  // din |         |
+#define LCD_DC 10  // dc  | LCD5110 |
+#define LCD_RST 11 // rst | Piouts  |
+#define LCD_CE 12  // cs  |         |
+#define LCD_BL 13  // sw  |---------|
+
+#define ENC_CLK 4 // A  |-----------------|
+#define ENC_DT 3  // B  | Encoder Pinouts |
+#define ENC_SW 2  // sw |-----------------|
+
 Adafruit_PCD8544 Screen::lcd = Adafruit_PCD8544(LCD_CLK, LCD_Din, LCD_DC, LCD_CE, LCD_RST); // Initialize Screen's static Adafruit_PCD8544 object.
 int Screen::active_page = -1; // -1 means menu page is displaying on the screen.
 

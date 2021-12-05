@@ -19,15 +19,4 @@
 #define LCD_LenX 84
 #define LCD_LenY 48
 
-#define LCD_CLK 8  // sck |---------|
-#define LCD_Din 9  // din |         |
-#define LCD_DC 10  // dc  | LCD5110 |
-#define LCD_RST 11 // rst | Piouts  |
-#define LCD_CE 12  // cs  |         |
-#define LCD_BL 13  // sw  |---------|
-
-#define ENC_CLK 4 // A  |-----------------|
-#define ENC_DT 3  // B  | Encoder Pinouts |
-#define ENC_SW 2  // sw |-----------------|
-
 #endif

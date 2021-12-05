@@ -18,6 +18,17 @@
 #include <LCD5110_Menu.h>
 #include <Encoder.h>
 
+#define LCD_CLK 8  // sck |---------|
+#define LCD_Din 9  // din |         |
+#define LCD_DC 10  // dc  | LCD5110 |
+#define LCD_RST 11 // rst | Piouts  |
+#define LCD_CE 12  // cs  |         |
+#define LCD_BL 13  // sw  |---------|
+
+#define ENC_CLK 4 // A  |-----------------|
+#define ENC_DT 3  // B  | Encoder Pinouts |
+#define ENC_SW 2  // sw |-----------------|
+
 Adafruit_PCD8544 Screen::lcd = Adafruit_PCD8544(LCD_CLK, LCD_Din, LCD_DC, LCD_CE, LCD_RST); // Initialize Screen's static Adafruit_PCD8544 object.
 Encoder encoder(ENC_CLK, ENC_DT, 0, 1, 0, 6); // Encoder generates values between 0-6 (0 and 6 included). Because menu has 7 options.
 
