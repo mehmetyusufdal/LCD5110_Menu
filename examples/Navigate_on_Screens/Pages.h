@@ -15,7 +15,7 @@ private:
     }
 
     void secondScr(){
-        String txt = "Second PAGE";
+        String txt = "Second Page";
 
         lcdReset();
         lcd.setCursor(textAlign(CENTER_X, &txt), textAlign(CENTER_Y, &txt));
@@ -24,7 +24,7 @@ private:
     }
 
     void thirdScr(){
-        String txt = "Third PAGE";
+        String txt = "Third Page";
 
         lcdReset();
         lcd.setCursor(textAlign(CENTER_X, &txt), textAlign(CENTER_Y, &txt));
